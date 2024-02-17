@@ -18,8 +18,11 @@ const today = new Date();
 const hour = today.getHours().toString().padStart(2, '0');
 const min = today.getMinutes().toString().padStart(2, '0'); 
 const day = today.getDate();
+const year = today.getFullYear();
 const monthIndex = today.getMonth();
-const formattedDate = day + " " + monthNames[monthIndex] + " " + hour + ":" + min;
+const formattedDate1 = day + " " + monthNames[monthIndex];
+const formattedDate2 = day + " " + monthNames[monthIndex] + " " + hour + ":" + min;
+const formattedDate3 = year;
 
 function Forecast() {
         return (
@@ -29,7 +32,7 @@ function Forecast() {
                     <div className="today">
                     <div className="today-date">
                         <div className="today">Monday</div>
-                        <div className="date">{formattedDate}</div>
+                        <div className="date">{formattedDate1}</div>
                     </div>
                     <div className="forecast-info">
                         <div className="city">Moldova</div>
@@ -163,4 +166,4 @@ function Forecast() {
 }
 
 export default Forecast;
-export { formattedDate };
+export { formattedDate1, formattedDate2, formattedDate3};

@@ -425,4 +425,302 @@ form input[type="submit"] {
 }
 
 
-/* date= 24px */
+
+/* FEATURES */
+
+.big-container {
+    box-sizing: border-box;
+    padding: 70px 0;
+    color: white;
+}
+.main-block {
+    width: 1170px;
+    height: 390px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.main-elements-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+}
+
+.block-title {
+    width: 360px;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.block-elements {
+    /* display: grid; */
+    /* grid-template-columns: 50px auto; */
+    padding-left: 30px;
+}
+
+.text-header {
+    font-family: "Roboto",'Open Sans', sans-serif;
+    font-weight: 500;
+    /* width: 300px;     */
+    margin-bottom: 20px;
+}
+
+.text-info {
+    font-family: "Roboto",'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #bfc1c8;
+    margin-bottom: 10px;
+
+}
+
+.img-block{ 
+    position: absolute;
+}
+
+.element {
+    margin-bottom: 10px;
+}
+
+.t2 {
+    margin-bottom: 25px;
+}
+.element-text {
+    font-family: "Roboto",'Open Sans', sans-serif;
+    font-size: 14px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.element-text:hover{
+    color: #009ad8;
+    transition: .1s linear;
+}
+
+#img-block {
+    position: absolute;
+}
+
+.hr {
+    height: 1px;
+    width: 360px;
+    background-color: #323544;
+}
+
+.block-element {
+    display: grid;
+    /* grid-template-columns: repeat(3, 130px);
+    grid-template-rows: repeat(3, 1fr); */
+}
+
+.block-title-t3 {
+    /* height: 60px; */
+    width: 360px;
+    font-size: 36px;
+    /* margin-bottom: 10px; */
+}
+
+.main-block-b2 {
+    display: grid;
+    grid-template-columns: repeat(3, 115px);
+    grid-template-rows: repeat(3, 76.72px);
+    gap: 10px;
+}
+
+#awsome-photos-image {
+    max-width: 115px;
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+
+
+.footer-big-block {
+    background-color: #262936;
+    height: 200px;
+}
+
+.footer-main-block {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.footer-elements {
+    box-sizing: border-box;
+    font-family: "Roboto",'Open Sans', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    width: 1140px;
+    padding-top: 60px;
+}
+form {
+    position: relative;
+}
+
+form input[type="search"] {
+    color: white;
+    font-family: "Roboto", inherit;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #1e202b;
+    padding: 20px 50px 20px 20px;
+    width: 750px;
+    height: 57px;
+}
+
+form input[type="submit"] {
+    cursor: pointer;
+    background-color: #009ad8;
+    color: white;
+    width: 100px;
+    height: 47px;
+    margin: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#f-search,
+#f-submit {
+    border: none;
+    outline: none;
+    border-radius: 100px;
+
+}
+
+footer {
+    font-family: "Roboto",'Open Sans', sans-serif;
+    color: #bfc1c8;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0px;
+}
+
+.social-media {
+    margin: 0 auto;
+    padding-top: 8.5px
+}
+
+
+
+
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* body {
+    margin: 0;
+    padding: 0;
+    background: #f1f1f1;
+} */
+ul {
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+ul li {
+    position: relative;
+    list-style: none;
+    margin: 0 2px;
+}
+ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 40px;
+    height: 8px;
+    background: #000;
+    border-radius: 50%;
+    transition: 0.5s;
+    opacity: 0;
+    filter: blur(2px);
+    transform: scale(0.8);
+}
+ul li:hover::before {
+    transition-delay: 0.2s;
+    opacity: 0.2;
+    transform: scale(1);
+}
+ul li a {
+    width: 40px;
+    height: 40px;
+    display: block;
+    transition: 0.5s;
+}
+ul li:hover a {
+    transform: translateY(-10px);
+}
+ul li a span  {
+    width: 100%;
+    height: 100%;
+}
+ul li a span::before {
+    font-family: fontAwesome;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    color: #262626;
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+ul li:hover a span::before {
+    transform: rotateX(90deg) translateY(-50%);
+}
+ul li a span::after {
+    font-family: fontAwesome;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: #fff;
+    color: #262626; */
+    transform-origin: bottom;
+    transition: transform 0.5s;
+    transform: rotateX(90deg) translateY(50%);
+}
+ul li:hover a span::after {
+    transform: rotateX(0deg) translateY(0);
+}
+ul li:nth-child(1) a span::before,
+ul li:nth-child(1) a span::after {
+    content: '\f09a';
+}
+ul li:nth-child(2) a span::before,
+ul li:nth-child(2) a span::after {
+    content: '\f099';
+}
+ul li:nth-child(3) a span::before,
+ul li:nth-child(3) a span::after {
+    content: '\f0d5';
+}
+ul li:nth-child(4) a span::before,
+ul li:nth-child(4) a span::after {
+    content: '\f0e1';
+}
+ul li:nth-child(1) a span::after {
+    background: #3b5999;
+    color: #fff;
+}
+ul li:nth-child(2) a span::after {
+    background: #55acce;
+    color: #fff;
+}
+ul li:nth-child(3) a span::after {
+    background: #dd4b39;
+    color: #fff;
+}
+ul li:nth-child(4) a span::after {
+    background: #0077b5;
+    color: #fff;
+}

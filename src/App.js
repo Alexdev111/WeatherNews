@@ -4,7 +4,7 @@
 import React from "react";
 // import axios from "axios";
 import Header from "./components/Header";
-import Forecast, { formattedDate } from "./components/Forecast";
+import Forecast, { formattedDate2, formattedDate3 } from "./components/Forecast";
 import play_button from '../src/images/icons/play-button@2x.png';
 import arrow from '../src/images/icons/arrow.png';
 
@@ -13,6 +13,17 @@ import live_camera_1 from '../src/images/live-camera-1.jpg';
 import live_camera_2 from '../src/images/live-camera-2.jpg';
 import live_camera_3 from '../src/images/live-camera-3.jpg';
 import live_camera_4 from '../src/images/live-camera-4.jpg';
+
+import awsome1 from '../src/images/awsome1.jpg'
+import awsome2 from '../src/images/awsome2.jpg'
+import awsome3 from '../src/images/awsome3.jpg'
+import awsome4 from '../src/images/awsome4.jpg'
+import awsome5 from '../src/images/awsome5.jpg'
+import awsome6 from '../src/images/awsome6.jpg'
+import awsome7 from '../src/images/awsome7.jpg'
+import awsome8 from '../src/images/awsome8.jpg'
+import awsome9 from '../src/images/awsome9.jpg'
+// import awsome10 from '../src/images/awsome10.jpg'
 
 function app() {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,is_day,precipitation,wind_speed_10m&hourly=&timezone=auto`
@@ -56,7 +67,7 @@ function app() {
                                     <img src={play_button} alt="play-button" id="fa"/>
                                 </div>
                             <div className="live-camera-title">New York</div>
-                            <div className="live-camera-date">{formattedDate}</div>
+                            <div className="live-camera-date">{formattedDate2}</div>
                         </div>
                         </div>
 
@@ -67,7 +78,7 @@ function app() {
                                     <img src={play_button} alt="play-button" id="fa"/>
                                 </div>
                             <div className="live-camera-title">Los Angeles</div>
-                            <div className="live-camera-date">{formattedDate}</div>
+                            <div className="live-camera-date">{formattedDate2}</div>
                         </div>
                         </div>
 
@@ -78,7 +89,7 @@ function app() {
                                     <img src={play_button} alt="play-button" id="fa"/>
                                 </div>
                             <div className="live-camera-title">Chicago</div>
-                            <div className="live-camera-date">{formattedDate}</div>
+                            <div className="live-camera-date">{formattedDate2}</div>
                         </div>
                         </div>
 
@@ -89,7 +100,7 @@ function app() {
                                     <img src={play_button} alt="play-button" id="fa"/>
                                 </div>
                             <div className="live-camera-title">London</div>
-                            <div className="live-camera-date">{formattedDate}</div>
+                            <div className="live-camera-date">{formattedDate2}</div>
                         </div>
                         </div>
                     </div>
@@ -139,6 +150,160 @@ function app() {
                         <img src={arrow} alt="icon" id="arrow-icon"></img>
                         </div>
 
+                    </div>
+                    </div>
+                </div>
+
+                {/* FEATURES */}
+            <div className="big-container">
+                <div className="main-block">
+                    <div className="main-elements-block">
+                        <div id="block-element">
+                            <div className="block-title">Application features</div>
+                                <div className="img-block">
+                                    <img src={arrow} alt="arrow" id="arrow-icon i2"></img>
+                                </div>
+                            <div className="block-elements">
+                                <div className="text-header">Natus error sit voluptatem accusantium</div>
+                                <div className="text-info">Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</div>
+                            </div>
+                                <div className="img-block">
+                                    <img src={arrow} alt="arrow" id="arrow-icon i2"></img>
+                                </div>
+                            <div className="block-elements">
+                                <div className="text-header">Natus error sit voluptatem accusantium</div>
+                                <div className="text-info">Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</div>
+                            </div>
+                                <div className="img-block">
+                                    <img src={arrow} alt="arrow" id="arrow-icon i2"></img>
+                                </div>
+                            <div className="block-elements">
+                                <div className="text-header">Natus error sit voluptatem accusantium</div>
+                                <div className="text-info">Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</div>
+                            </div>
+                        </div>
+
+
+                        <div id="block-element">
+                        <div className="block-title t2">Weather analyssis</div>
+                            <div className="elements">
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Accusantium doloremque laudantium rem aperiam</div>
+                                    <div className="hr"></div>
+                                </div>
+
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Eaque ipsa quae ab illo inventore veritatis quasi</div>
+                                    <div className="hr"></div>
+                                </div>
+                                
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Architecto beatae vitae dicta sunt explicabo</div>
+                                    <div className="hr"></div>
+                                </div>
+
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Nemo enim ipsam voluptatem quia voluptas</div>
+                                    <div className="hr"></div>
+                                </div>
+
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Aspernatur aut odit aut fugit, sed quia consequuntur</div>
+                                    <div className="hr"></div>
+                                </div>
+
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Magni dolores eos qui ratione voluptatem sequi</div>
+                                    <div className="hr"></div>
+                                </div>
+
+                                <div id="img-block">
+                                <img src={arrow} alt="arrow" id="arrow-icon i3"></img>
+                                </div>
+                                <div className="element">
+                                    <div className="element-text">Neque porro quisquam est qui dolorem ipsum quia</div>
+                                </div>
+                                </div>
+                        </div>
+
+
+                        <div className="block-element">
+                            <div className="block-title-t3">Awesome Photos</div>
+                                <div className="main-block-b2">
+                                    <div className="aws-photos-block">
+                                        <img src={awsome1} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome2} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome3} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome4} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome5} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome6} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome7} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome8} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                                    <div className="aws-photos-block">
+                                        <img src={awsome9} alt="awsome-img" id="awsome-photos-image"></img>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* FOOTHER */}
+
+            <div className="footer-big-block">
+                <div className="footer-main-block">
+                    <div className="footer-elements">
+                    <container className="footer-container">
+                        <form method="post">
+                        <input type="search" maxLength={15} id="f-search" placeholder="Enter your email to subscribe..."></input>
+                        <input type="submit" value={'Subscribe'} id="f-submit"></input>
+                        </form>
+
+                        <div className="social-media">
+                            <ul>
+                                <li><a href="app.js"><span></span></a></li>
+                                <li><a href="app.js"><span></span></a></li>
+                                <li><a href="app.js"><span></span></a></li>
+                                <li><a href="app.js"><span></span></a></li>
+                            </ul>
+                        </div>
+                    </container>
+
+                    <footer>WeatherNews {formattedDate3}. Developed by Alex Gurgurov. All rights reserved</footer>
                     </div>
                     </div>
                 </div>
