@@ -26,32 +26,20 @@ import awsome9 from '../src/images/awsome9.jpg'
 // import awsome10 from '../src/images/awsome10.jpg'
 
 function app() {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,is_day,precipitation,wind_speed_10m&hourly=&timezone=auto`
-
-    fetch(url).then((response) =>{
-        if(response.status === 200) {
-            return response.json();
-        }
-        else {
-            console.error('Its not ok!')
-        }
-        console.log(response)
-
-        }).then((info) => {
-            console.log(info)
-        });
 
         return(
-            <div>
+            <div id="boss">
             <Header />
             <div className="hero">
-            <container className="search-container">
-                <form method="post">
-                    <input type="search" maxLength={15} id="location-search" placeholder="Find your location"></input>
-                    <input type="submit" value={'Find'} id="submit"></input>
-                </form>
+            <container className="search-container-1">
+            <form method="post" id="form1" className="form-large">
+                <input type="search" maxLength={15} id="location-search-large" placeholder="Find your location"></input>
+                <input type="submit" value={'Find'} id="submit-large"></input>
+            </form>
             </container>
             </div>
+
+            <div className="weather-container">
             <Forecast />
 
             {/* LIVE CAMERAS */}
@@ -288,10 +276,12 @@ function app() {
                 <div className="footer-main-block">
                     <div className="footer-elements">
                     <container className="footer-container">
-                        <form method="post">
-                        <input type="search" maxLength={15} id="f-search" placeholder="Enter your email to subscribe..."></input>
-                        <input type="submit" value={'Subscribe'} id="f-submit"></input>
-                        </form>
+                        <container className="search-container-2">
+                    <form method="post" id="form2" className="form-small">
+                        <input type="search" maxLength={15} id="location-search-small" placeholder="Find your location"></input>
+                        <input type="submit" value={'Find'} id="submit-small"></input>
+                    </form>
+                </container>
 
                         <div className="social-media">
                             <ul>
@@ -306,6 +296,7 @@ function app() {
                     <footer>WeatherNews {formattedDate3}. Developed by Alex Gurgurov. All rights reserved</footer>
                     </div>
                     </div>
+                </div>
                 </div>
             </div>
         )
@@ -342,4 +333,6 @@ function app() {
 //             console.log(response)
 //         })
 // }
+
+
 export default app
