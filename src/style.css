@@ -258,10 +258,8 @@ html {
     border-radius: 100px;
     margin-bottom: 70px;
   }
-  form input[type="submit"] {
-  }
   
-  #submit-large,
+  #submit-button,
   #submit-small {
     cursor: pointer;
     background-color: #009ad8;
@@ -281,7 +279,7 @@ html {
     margin-bottom: 70px;
   }
 
-  #submit-large {
+  #submit-button {
     margin-left: 1030px;
   }
 
@@ -426,7 +424,12 @@ sup {
     margin-bottom: 20px;
 }
 
-#max-grade {
+#max-grade-1,
+#max-grade-2,
+#max-grade-3,
+#max-grade-4,
+#max-grade-5,
+#max-grade-6{
     display: flex;
     color: white;
     justify-content: center;
@@ -435,7 +438,12 @@ sup {
     font-size: 24px;
 }
 
-#min-grade {
+#min-grade-1,
+#min-grade-2,
+#min-grade-3,
+#min-grade-4,
+#min-grade-5,
+#min-grade-6 {
     display: flex;
     justify-content: center;
     font-family: "Roboto", sans-serif;
@@ -447,7 +455,7 @@ sup {
     padding: 70px 0;
 }
 
-.container {
+.container-live-cameras {
     font-family: "Roboto", sans-serif;
     color: white;
     width: 1170px;
@@ -674,7 +682,13 @@ sup {
 
 #awsome-photos-image {
     max-width: 115px;
+    /* cursor: pointer; */
+}
+#awsome-photos-image:hover {
+    transition: .3s linear;
+    opacity: .6;
     cursor: pointer;
+
 }
 
 

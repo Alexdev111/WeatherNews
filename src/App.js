@@ -3,7 +3,6 @@
 
 import React from "react";
 // import axios from "axios";
-import Header from "./components/Header";
 import Forecast, { formattedDate2, formattedDate3 } from "./components/Forecast";
 import play_button from '../src/images/icons/play-button@2x.png';
 import arrow from '../src/images/icons/arrow.png';
@@ -29,22 +28,11 @@ function app() {
 
         return(
             <div id="boss">
-            <Header />
-            <div className="hero">
-            <container className="search-container-1">
-            <form method="post" id="form1" className="form-large">
-                <input type="search" maxLength={15} id="location-search-large" placeholder="Find your location"></input>
-                <input type="submit" value={'Find'} id="submit-large"></input>
-            </form>
-            </container>
-            </div>
-
             <div className="weather-container">
             <Forecast />
-
             {/* LIVE CAMERAS */}
             <div className="block">
-                <div className="container">
+                <div className="container-live-cameras">
                     <h2 className="section-text">Live cameras</h2>
 
                     <div className="live-camera-container">
@@ -301,38 +289,6 @@ function app() {
             </div>
         )
     }
-
-// function app() {
-
-    // const url = `https://api.open-meteo.com/v1/forecast?latitude=40.730610&longitude=-73.935242&current=temperature_2m,is_day,wind_speed_10m`
-    // fetch(url).then((response) =>{
-    //         return response.json();
-    //     })
-    //     .then((info) => {
-    //         renderWeather(info.current)
-    //     });
-
-
-    //     function renderWeather(data) {
-    //         const div = document.createElement('div');
-    //         div.textContent = `
-    //         temp: ${data.temperature_2m}
-    //         wind speed: ${data.wind_speed_10m}
-    //         now: ${data.is_day === 0 ? 'night' : 'day'}
-    //         `
-
-    //         document.body.append(div)
-    //     }
-
-
-//         axios.post(
-//             'https://jsonplaceholder.typicode.com/posts', {
-//                 title: 'ajajaaaaaa'
-//             }
-//         ).then((response) => {
-//             console.log(response)
-//         })
-// }
 
 
 export default app
