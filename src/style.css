@@ -7,13 +7,13 @@
 }
 
 body {
+    width: auto;
+    height: auto;
     font-family: "Roboto", "Open Sans", sans-serif;
     font-size: 14px;
     font-weight: 300;
     line-height: 1.5;
     background: #1e202b;
-    margin: 0;
-    padding: 0;
     /* background-color: #bfc1c8; */
 }
 
@@ -22,13 +22,6 @@ html {
 }
 
 @media (max-width: 1350px) {
-    html {
-
-    }
-
-    .weather-container {
-        /* margin-left: 52.25px; */
-    }
 
     /* .forecast-table {
         /* max-width: 90%; */

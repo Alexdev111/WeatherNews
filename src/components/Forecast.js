@@ -11,7 +11,7 @@ import icon5 from '../images/icons/icon-7.svg';
 import icon6 from '../images/icons/icon-12.svg';
 import icon7 from '../images/icons/icon-13.svg';
 import icon8 from '../images/icons/icon-14.svg';
-import WIndIcon from '../images/wind-icon.png'
+import WIndIcon from '../images/wind-icon.png'; 
 
 const monthNames = [
     "January", "February", "March", "April", "May", "June",
@@ -33,81 +33,54 @@ const formattedDate3 = year;
 
 const latitude = '47.06270550000001'
 const longitude = '28.8048974'
-// timezone timezone=Europe%2FChisinau
-let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`
-// let urlBeta = `https://api.open-meteo.com/v1/forecast?latitude=47.0042&longitude=28.8574&current=temperature_2m,wind_direction_10m,wind_speed_10m,relative_humidity_2m&hourly=wind_speed_10m`;
+let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code,temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`
 
-
-// const WeatherForecast = () => {
-//     const [forecastData, setForecastData] = useState(null);
-//     const API_URL = 'https://api.open-meteo.com/v1/forecast';
-//     const LATITUDE = '47.25';
-//     const LONGITUDE = '28.5833';
-//     const TIMEZONE = 'Europe/Chisinau';
-
-//     useEffect(() => {
-//         const fetchForecast = async () => {
-//             try {
-//                 const response = await fetch(
-//                     `${API_URL}?latitude=${LATITUDE}&longitude=${LONGITUDE}&current=temperature_2m,is_day,rain,wind_speed_10m,wind_direction_10m&hourly=&timezone=${TIMEZONE}`
-//                 );
-//                 if (!response.ok) {
-//                     throw new Error('Failed to fetch forecast data');
-//                 }
-//                 const data = await response.json();
-//                 // Filter data for future days
-//                 const futureDaysData = data.hourly.filter(hour => {
-//                     const hourTimestamp = new Date(hour.time).getTime();
-//                     const currentTimestamp = Date.now();
-//                     const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
-//                     return hourTimestamp > currentTimestamp && (hourTimestamp - currentTimestamp) < (3 * oneDayInMilliseconds); // Adjust number of days as needed
-//                 });
-//                 setForecastData(futureDaysData);
-//             } catch (error) {
-//                 console.error('Error fetching forecast data:', error);
-//             }
-//         };
-
-//         fetchForecast();
-//     }, []);
-//     console.log(WeatherForecast)
-
-        function Forecast() {
+    function Forecast() {
             useEffect(() => {
+                document.getElementById('submit-button').addEventListener('click', getCoordinates);
+                function EnterKeyDown(event) {
+                    if(event.key === 'Enter')
+                    getCoordinates();
+                }
+                document.getElementById('location-search-large').addEventListener('keydown', EnterKeyDown);
                 fetch(API_URL)
                     .then(response => response.json())
                     .then(info => {
                         renderWeather(info.current);
-                        renderWeatherDaily(info.daily)
-
+                        renderWeatherDaily(info.daily);
                         console.log(info);
                         console.log(info.hourly.time[24])
                     })
                     .catch(error => {
                         console.error("Error fetching weather data:", error);
                     });
+                    return () => {
+                        document.getElementById('submit-button').removeEventListener('click', getCoordinates);
+                        document.getElementById('location-search-large').removeEventListener('keydown', EnterKeyDown);
+                    }
             }, []);
             
-                function renderWeather(data) {
+        async function renderWeather(info) {
                     let div = `
+                    ---------------CURRENT DATA FORECAST---------------
                     Latitude: ${latitude} Longitude: ${longitude}
-                    Temperature: ${data.temperature_2m}
-                    Wind Speed: ${data.wind_speed_10m}
-                    now: ${data.is_day === 0 ? 'night' : 'day'}
-                    Humidity: ${data.relative_humidity_2m}
-                    Rain ${data.rain}%
+                    Temperature: ${info.temperature_2m}
+                    Wind Speed: ${info.wind_speed_10m}
+                    now: ${info.is_day === 0 ? 'night' : 'day'}
+                    Humidity: ${info.relative_humidity_2m}
+                    Rain ${info.rain}%
                     `
                     console.log(div)
-                    const currTemp = Math.round(data.temperature_2m)
+                    const currTemp = Math.round(info.temperature_2m)
                     const currTempElement = document.getElementById('grade')
                     currTempElement.textContent = currTemp
 
                     
-                    const windSpeed = Math.round(data.wind_speed_10m)
+                    const windSpeed = Math.round(info.wind_speed_10m)
                     const windSpeedElement = document.getElementById('wind-speed')
                     windSpeedElement.textContent = windSpeed + 'km/h'
 
-                    const humidity = data.relative_humidity_2m
+                    const humidity = info.relative_humidity_2m
                     const humidityElement = document.getElementById('humidity-procent')
                     humidityElement.textContent = humidity + '%'
                 
@@ -118,10 +91,11 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                     return directions[index % 8];
                 }
                 const windDirectElement = document.getElementById('compass-direction')
-                windDirectElement.textContent = getWindDirections(data.wind_direction_10m)
+                windDirectElement.textContent = getWindDirections(info.wind_direction_10m)
+            }
 //  ------------------------------SEARCH FETCH-----------------------------------------
-        function getCoordinates() {
-            const apiKey = 'AIzaSyBOBMYfXOoZtjq5x96alyK_XGWAs8HHlRU';
+    function getCoordinates() {
+            let apiKey = 'AIzaSyBOBMYfXOoZtjq5x96alyK_XGWAs8HHlRU';
             let cityName = document.getElementById('location-search-large').value;
             let urlC = `https://maps.googleapis.com/maps/api/geocode/json?address=${cityName}&key=${apiKey}`;
 
@@ -139,25 +113,112 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                             cityElement.textContent = cityName;
                         } else {
                              console.error('City element not found.');
-                            }                       
-                    
-                    const urlTest = `https://api.open-meteo.com/v1/forecast?latitude=${afterLatitude}&longitude=${afterLongitude}&current=temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`
-                    fetch(urlTest)
-                    .then(data => data.json())
-                    .then(json => console.log(json))
-                    .catch(err => console.error(err));
-                        } else {
-                        console.error('City not found.');
-                }
-                })
-            }
-            // let citycity = document.getElementById('location-search-large').value
-            document.getElementById('submit-button').addEventListener('click', getCoordinates)
-            // document.getElementById('submit-button').addEventListener('click', citycity = '' )
-        }           
+                        }
 
-        function renderWeatherDaily(data) {
+                    const urlTest = `https://api.open-meteo.com/v1/forecast?latitude=${afterLatitude}&longitude=${afterLongitude}&current=weather_code,temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`;
+                    console.log(urlTest)
+
+            
+                fetch(urlTest)
+                    .then(resp => resp.json())
+                    .then(json => {
+                        let div = `
+                            ---------------AFTER CLICK DATA FORECAST---------------
+                            Temperature max: ${json.daily.apparent_temperature_max}
+                            Temperature min: ${json.daily.apparent_temperature_min}
+                            Wind Speed: ${json.current.wind_speed_10m}
+                            WInd Direction: ${getWindDirections(json.current.wind_direction_10m)}
+                            now: ${json.current.is_day === 0 ? 'night' : 'day'}
+                            Humidity: ${json.current.relative_humidity_2m}
+                            Rain ${json.current.rain}%
+                            `
+                            console.log(div)
+
+                                const currentTemp = Math.round(json.current.temperature_2m)
+                                document.getElementById('grade').innerHTML = currentTemp
+
+                                const currentHumidity = Math.round(json.current.relative_humidity_2m)
+                                document.getElementById('humidity-procent').innerHTML = currentHumidity + '%'
+
+                                const currentWindSpeed = Math.round(json.current.wind_speed_10m)
+                                document.getElementById('wind-speed').innerHTML = currentWindSpeed + 'km/h'
+
+                            function getWindDirections(degrees) {
+                                const directions = ['North', 'North-East', 'East', 'South-East', 'South', 'South-West', 'West', 'North-West']
+                                    const index = Math.round((degrees % 360) / 45);
+                                return directions[index % 8];
+                                }
+                                const windDirectElement = document.getElementById('compass-direction')
+                                windDirectElement.textContent = getWindDirections(json.current.wind_direction_10m)
+
+                                const max_grade = Math.round(json.daily.apparent_temperature_max[1])
+                                const max_gradeElement = document.getElementById("max-grade-1")
+                                max_gradeElement.textContent = max_grade + '°C'
+
+                                const min_grade = Math.round(json.daily.apparent_temperature_min[1])
+                                const min_gradeElement = document.getElementById("min-grade-1")
+                                min_gradeElement.textContent = min_grade + '°C'
+
+                                const max_grade_2 = Math.round(json.daily.apparent_temperature_max[2])
+                                const max_gradeElement_2 = document.getElementById("max-grade-2")
+                                max_gradeElement_2.textContent = max_grade_2 + '°C'
+
+                                const min_grade_2 = Math.round(json.daily.apparent_temperature_min[2])
+                                const min_gradeElement_2 = document.getElementById("min-grade-2")
+                                min_gradeElement_2.textContent = min_grade_2 + '°C'
+
+                                const max_grade_3 = Math.round(json.daily.apparent_temperature_max[3])
+                                const max_gradeElement_3 = document.getElementById("max-grade-3")
+                                max_gradeElement_3.textContent = max_grade_3 + '°C'
+
+                                const min_grade_3 = Math.round(json.daily.apparent_temperature_min[3])
+                                const min_gradeElement_3 = document.getElementById("min-grade-3")
+                                min_gradeElement_3.textContent = min_grade_3 + '°C'
+
+                                const max_grade_4 = Math.round(json.daily.apparent_temperature_max[4])
+                                const max_gradeElement_4 = document.getElementById("max-grade-4")
+                                max_gradeElement_4.textContent = max_grade_4 + '°C'
+
+                                const min_grade_4 = Math.round(json.daily.apparent_temperature_min[4])
+                                const min_gradeElement_4 = document.getElementById("min-grade-4")
+                                min_gradeElement_4.textContent = min_grade_4 + '°C'
+
+                                const max_grade_5 = Math.round(json.daily.apparent_temperature_max[5])
+                                const max_gradeElement_5 = document.getElementById("max-grade-5")
+                                max_gradeElement_5.textContent = max_grade_5 + '°C'
+
+                                const min_grade_5 = Math.round(json.daily.apparent_temperature_min[5])
+                                const min_gradeElement_5 = document.getElementById("min-grade-5")
+                                min_gradeElement_5.textContent = min_grade_5 + '°C'
+
+                                const max_grade_6 = Math.round(json.daily.apparent_temperature_max[6])
+                                const max_gradeElement_6 = document.getElementById("max-grade-6")
+                                max_gradeElement_6.textContent = max_grade_6 + '°C'
+
+                                const min_grade_6 = Math.round(json.daily.apparent_temperature_min[6])
+                                const min_gradeElement_6 = document.getElementById("min-grade-6")
+                                min_gradeElement_6.textContent = min_grade_6 + '°C'
+                            })
+                            .catch (wrong => console.error("Something wrong with after forecast table data: ", wrong))
+                        }
+                            
+                })
+                .catch (error => {
+                    console.error("Error fetching coordonates: ", error)
+                });
+
+                
+                // _________________________________________________________________
+            
+
+                        
+
+                        
+            }
+           
+    async function renderWeatherDaily(data) {
                 let div = `
+                    ---------------FUTURE DATA FORECAST---------------
                     Temperature max: ${data.apparent_temperature_max}
                     Temperature min: ${data.apparent_temperature_min}
                     Wind Speed: ${data.wind_speed_10m}
@@ -215,27 +276,6 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                         min_gradeElement_6.textContent = min_grade_6 + '°C'
                 }
 
-    // const url1 = 'https://dummyjson.com/users';
-
-    // function fetchurl() {
-    //     fetch(url1)
-    //         .then((resp) => {
-    //             if (!resp.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return resp.json();
-    //         })
-    //         .then(json => {
-    //             const users = json.users;
-    //             for (let i = 0; i < 5 && i < users.length; i++) {
-    //                 console.log(users[i]);
-    //             }
-    //             console.log(json);
-    //         })
-    //         .catch(err => console.error(err.message));
-    // }
-    
-    // fetchurl();
         return (
             <div>
             <Header />
@@ -350,9 +390,7 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
         </div>
     </div>
     </div>
-    )
-    
+    )   
 }
-        
 export default Forecast;
 export { formattedDate1, formattedDate2, formattedDate3};
