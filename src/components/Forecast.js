@@ -5,7 +5,9 @@ import UmbrellaIcon from '../images/humidity-icon.png';
 import Header from "./Header";
 // import WindIcon from '../images/icon-wind.png';
 import CompassIcon from '../images/compass-icon.png';
-import icon3 from '../images/icons/icon-3.svg';
+// import icon1 from '../images/icons/icon-3.svg';
+// import icon2 from '../images/icons/icon-3.svg';
+import icon3 from '../images/icons/Weather News Icons/sun.svg';
 import icon4 from '../images/icons/icon-5.svg';
 import icon5 from '../images/icons/icon-7.svg';
 import icon6 from '../images/icons/icon-12.svg';
@@ -33,7 +35,7 @@ const formattedDate3 = year;
 
 const latitude = '47.06270550000001'
 const longitude = '28.8048974'
-let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code,temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`
+let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code,temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,weather_code,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`
 
     function Forecast() {
             useEffect(() => {
@@ -47,6 +49,7 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                     .then(response => response.json())
                     .then(info => {
                         renderWeather(info.current);
+                        renderWeatherCurrently(info.current);
                         renderWeatherDaily(info.daily);
                         console.log(info);
                         console.log(info.hourly.time[24])
@@ -69,6 +72,7 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                     now: ${info.is_day === 0 ? 'night' : 'day'}
                     Humidity: ${info.relative_humidity_2m}
                     Rain ${info.rain}%
+                    WMO Weather Code:  ${info.weather_code}
                     `
                     console.log(div)
                     const currTemp = Math.round(info.temperature_2m)
@@ -115,9 +119,7 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                              console.error('City element not found.');
                         }
 
-                    const urlTest = `https://api.open-meteo.com/v1/forecast?latitude=${afterLatitude}&longitude=${afterLongitude}&current=weather_code,temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`;
-                    console.log(urlTest)
-
+                    const urlTest = `https://api.open-meteo.com/v1/forecast?latitude=${afterLatitude}&longitude=${afterLongitude}&current=weather_code,temperature_2m,is_day,rain,relative_humidity_2m,wind_speed_10m,wind_direction_10m&hourly=precipitation,weather_code,temperature_2m&daily=apparent_temperature_max,apparent_temperature_min&timezone=auto`;
             
                 fetch(urlTest)
                     .then(resp => resp.json())
@@ -131,6 +133,7 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                             now: ${json.current.is_day === 0 ? 'night' : 'day'}
                             Humidity: ${json.current.relative_humidity_2m}
                             Rain ${json.current.rain}%
+                            WMO Weather Code: ${json.current.weather_code}
                             `
                             console.log(div)
 
@@ -201,30 +204,130 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                             })
                             .catch (wrong => console.error("Something wrong with after forecast table data: ", wrong))
                         }
-                            
+
                 })
                 .catch (error => {
                     console.error("Error fetching coordonates: ", error)
-                });
+                }); 
 
-                
                 // _________________________________________________________________
-            
-
-                        
-
-                        
             }
-           
+
+            function renderWeatherCurrently(data) {
+                    console.log(`Wather code is ${data.weather_code}`)
+                        const wmo = data.weather_code
+                        switch (wmo) {
+                            case 0:
+                                const overcast = document.createElement('div')
+                                const overcastImg = document.createElement('img')
+                                overcastImg.src = '../images/icons/Weather News Icons/sun.svg';
+                                overcastImg.height = 70
+                                overcastImg.width = 100
+                                overcast.appendChild(overcastImg)
+                                console.log("Value is ", wmo)
+                                const image0 = document.getElementById('icon1')
+                                image0.innerHTML = overcast
+                            break;
+                            case 1:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 2:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 3:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 45:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 48:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 51:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 53:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 55:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 56:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 57:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 61:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 63:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 65:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 66:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 67:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 71:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 73:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 75:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 77:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 80:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 81:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 82:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 85:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 86:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 95:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 96:
+                                console.log("Value is ", wmo)
+                            break;
+                            case 99:
+                                console.log("Value is ", wmo)
+                            break;
+
+                        default: console.error("No WMO codes")
+                    }
+                    
+                    
+                    // const clearSunset = document.getElementById('icon1')
+                    // clearSunset.setAttribute('src', '../images/icons/icon-7.svg')
+                    // clearSunset.setAttribute('windth','100')
+                    // clearSunset.setAttribute('height','70')
+
+
+                    
+                    // clearSunset.innerHTML = "<img src='../images/icons/icon-5.svg' width='400px' height='150px'>"
+                }           
     async function renderWeatherDaily(data) {
                 let div = `
                     ---------------FUTURE DATA FORECAST---------------
-                    Temperature max: ${data.apparent_temperature_max}
-                    Temperature min: ${data.apparent_temperature_min}
-                    Wind Speed: ${data.wind_speed_10m}
-                    now: ${data.is_day === 0 ? 'night' : 'day'}
-                    Humidity: ${data.relative_humidity_2m}
-                    Rain ${data.rain}%
+                    T max: ${data.apparent_temperature_max}
+                    T min: ${data.apparent_temperature_min}
                     `
                     console.log(div)
                         const max_grade = Math.round(data.apparent_temperature_max[1])
@@ -325,7 +428,7 @@ let API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longi
                 <div className="day" style={{backgroundColor: '#222530'}}>{week[(currentDayIndex + 1) % 7]}</div>
                 <div className="day-card">
                         <div className="forecast-img">
-                            <img alt="day-icon" src={icon3} style={{width: '48px'}}></img>
+                            <img alt="day-icon" id="icon-3" src={icon3} style={{width: '48px'}}></img>
                         </div>
                         <div id='max-grade-1'>25°C</div>
                         <div id="min-grade-1">25°C</div>

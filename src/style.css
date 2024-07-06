@@ -690,7 +690,7 @@ sup {
 
 .footer-big-block {
     background-color: #262936;
-    height: 200px;
+    height: auto;
 }
 
 .footer-main-block {
@@ -748,7 +748,7 @@ footer {
     color: #bfc1c8;
     display: flex;
     justify-content: center;
-    margin: 40px 0px;
+    /* margin: 40px 0px; */
 }
 
 .social-media {

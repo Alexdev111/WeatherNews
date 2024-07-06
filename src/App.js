@@ -273,8 +273,8 @@ function app() {
 
                         <div className="social-media">
                             <ul>
-                                <li><a href="app.js"><span></span></a></li>
-                                <li><a href="app.js"><span></span></a></li>
+                                <li><a href="https://www.facebook.com"><span></span></a></li>
+                                <li><a href="https://www.twitter.com"><span></span></a></li>
                                 <li><a href="app.js"><span></span></a></li>
                                 <li><a href="app.js"><span></span></a></li>
                             </ul>
